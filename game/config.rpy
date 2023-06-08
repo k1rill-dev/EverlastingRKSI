@@ -22,10 +22,12 @@ init 1:
     $ svalil = False
     $ zakolka = False
     $ is_stay_home_homie = False
+    $ persistent.chnomer = False
 
     #потом поменять цвета
     $ th = Character(u'Мысли', color="#FFA500", what_color="E2C778")
     $ hero = Character(u'Саша', color="#7ec557", what_color="E2C778")
+    
     $ al = Character(u'Алина', color="#55a9c1", what_color="E2C778")
     $ nn = Character(u'Незнакомец', color="#351868", what_color="E2C778")
     $ jeka = Character(u'Женя', color="#41c59d", what_color="E2C778")
@@ -39,4 +41,20 @@ init 1:
     $ hero_na = Character(u'Саша и Настя', color="#FFA500", what_color="E2C778")
 
 
-    $ define_assets('sprites')
+    $ define_assets('images/sprites')
+    $ define_assets('audio/music')
+
+init python:
+    import os
+    def get_username_pc():
+        if os.name == 'nt':
+            for name in ('LOGNAME', 'USER', 'LNAME', 'USERNAME'):
+                username = os.environ.get(name)
+        
+        elif os.name == 'posix':
+            for user in ('LOGNAME', 'USER', 'LNAME', 'USERNAME'):
+                username = os.environ.get('USER')
+        else:
+            username = None
+        
+        return username

@@ -6,9 +6,86 @@
 
 # перенести концовку 1 дня в отдельный лейбл, дабы уменьшить кол во строк кода!!!!!!!!!!!
 
+init python hide:
+
+    class KonamiListener(renpy.Displayable):
+        
+        def __init__(self, target):
+            
+            renpy.Displayable.__init__(self)
+            
+            import pygame
+            
+            
+            self.target = target
+            
+            
+            
+            self.state = 0
+            
+            
+            self.code = [
+                pygame.K_n,
+                pygame.K_i,
+                pygame.K_g,
+                pygame.K_g,
+                pygame.K_e,
+                pygame.K_r,
+                pygame.K_s
+                ]
+        
+        
+        def event(self, ev, x, y, st):
+            import pygame
+            
+            
+            if ev.type != pygame.KEYDOWN:
+                return
+            
+            
+            
+            if ev.key != self.code[self.state]:
+                self.state = 0
+                return
+            
+            
+            self.state += 1
+            
+            
+            
+            if self.state == len(self.code):
+                self.state = 0
+                renpy.call_in_new_context(self.target)
+            
+            return
+        
+        
+        def render(self, width, height, st, at):
+            return renpy.Render(1, 1)
+
+
+
+    store.konami_listener = KonamiListener('test0')
+
+
+    def konami_overlay():
+        ui.add(store.konami_listener)
+
+    config.overlay_functions.append(konami_overlay)
+
+
+label test0:
+    $ persistent.chnomer = True
+
+
+
 label start:
 
     th "Как же я не хочу вставать… Ну еще пять минуточек… "
+
+    if persistent.chnomer == True:
+        jump secret_ending
+
     th "Ладно, через силу, через боль, встаем!"
     th "В такую погоду  не то, что на улицу, с кровати не хочется вставать!"
     th "Но делать нечего…"
@@ -27,6 +104,8 @@ label start:
             $ is_stay_home_homie = True
             $ zakolka = False
             jump stay_home_first_day
+
+
 label go_to_first_seminar_first_day:
     "пошел на 1 пару"
     th "Не не, я что, прогульщик? Идем в колледж, выбора нет, да и вроде пары должны быть интересные…"
@@ -204,7 +283,7 @@ label go_to_first_seminar_first_day:
     th "Может, это вообще сон? Я сейчас проснусь?"
     th "Надо себя ущипнуть вроде, дабы проснуться…"
     "*щипает себя*"
-    th "Не сработало…)"
+    th "Не сработало…"
     th "Вот же блин, я настолько сильно зациклился на эту ситуацию, что не заметил, как наступила глубокая ночь."
     th "Мне нужно отдохнуть, сегодня был слишком насыщенный день."
     jump second_day
