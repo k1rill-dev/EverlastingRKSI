@@ -155,11 +155,10 @@ style say_label:
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
-
-    xpos gui.dialogue_xpos
+    xpos 278
     xsize gui.dialogue_width
-    ypos gui.dialogue_ypos
-
+    ypos 100
+    color "#ffffff"
     adjust_spacing False
 
 ## Экран ввода #################################################################
@@ -244,16 +243,14 @@ screen quick_menu():
     if quick_menu:
 
         hbox:
+
             style_prefix "quick"
 
             xalign 0.5
-            yalign 1.0
+            yalign 0.95
 
             textbutton _("Назад") action Rollback()
             textbutton _("История") action ShowMenu('history')
-            textbutton _("Пропуск") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Авто") action Preference("auto-forward", "toggle")
-            textbutton _("Сохранить") action ShowMenu('save')
             textbutton _("Б.Сохр") action QuickSave()
             textbutton _("Б.Загр") action QuickLoad()
             textbutton _("Опции") action ShowMenu('preferences')
@@ -290,8 +287,12 @@ screen navigation():
     vbox:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        # xpos gui.navigation_xpos
+        if main_menu:
+            xalign 0.5
+        else:
+            xoffset 60
+        yalign 0.6
 
         spacing gui.navigation_spacing
 
@@ -386,7 +387,7 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    # background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
