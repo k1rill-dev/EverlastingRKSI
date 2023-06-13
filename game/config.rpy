@@ -60,7 +60,7 @@ init 1:
     $ ship = Character(u'Алина Алексеевна', color="#45dec5", what_color="#ffffff", image='ship')
     $ an = Character(u'Настя', color="#d4ad64", what_color="#ffffff", image='an')
     $ tv = Character(u'Диктор', color="#4800ff", what_color="#ffffff")
-    $ ma = Character(u'Мария Васильевна', color="#82e70f", what_color="#ffffff", image='ma')
+    $ ma = Character(u'Тетя Маша', color="#82e70f", what_color="#ffffff", image='ma')
     $ doc = Character(u'Врач', color="#278b81", what_color="#ffffff", image='doc')
     $ hero_na = Character(u'Саша и Настя', color="#FFA500", what_color="#ffffff")
 

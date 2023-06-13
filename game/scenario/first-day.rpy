@@ -77,11 +77,6 @@ init python hide:
 label test0:
     $ persistent.chnomer = True
 
-init python:
-    onn = ImageDissolve("eye.png", 2.0, 20, reverse=False) 
-    off = ImageDissolve("eye.png", 2.0, 20, reverse=True) 
-
-#with bkrr_timeskip_short()
 label start:
 
     th "Как же я не хочу вставать… Ну еще пять минуточек… "
@@ -134,13 +129,13 @@ label go_to_first_seminar_first_day:
     th "Дорога с Западного будет долгой. Что там нового мне предложит музыка?"
     th "С такой спокойной музыкой только “Спокойной ночи малыши” не хватает. Но даже без них спать хочется, ужас."
 
+    window hide
     show blink
-    scene abobus with dissolve
-    $ renpy.pause(1.0)
+    $ renpy.pause(1.5)
     hide blink
     show unblink
-    # $ renpy.pause(1.0)
-    # show blinking
+    $ renpy.pause(1.0)
+    window show
 
     th "Я, уснул? Слава богу хоть остановку не проехал."
 
@@ -411,7 +406,16 @@ label go_to_first_seminar_first_day:
     th "Вот же блин, я настолько сильно зациклился на эту ситуацию, что не заметил, как наступила глубокая ночь."
     th "Мне нужно отдохнуть, сегодня был слишком насыщенный день."
 
-    "СДЕЛАЙ ПЖПЖПЖПЖ ЗАСТАВКУ ИГРЫ ПОД ИНТРО ПЖПЖПЖПЖПЖ"
+    window hide
+    $ renpy.pause(1.0)
+    play music intro fadein 1.0
+    scene black with dissolve
+    $ renpy.pause(13.3, hard=True)
+    show logo: 
+        xalign 0.5 yalign 0.5 
+    $ renpy.pause(7.8, hard=True)
+    stop music fadeout 1.5
+    window show
 
     jump second_day
 

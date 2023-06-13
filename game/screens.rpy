@@ -155,7 +155,7 @@ style say_label:
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
-    xpos 278
+    xpos 178
     xsize gui.dialogue_width
     ypos 100
     color "#ffffff"
@@ -247,7 +247,7 @@ screen quick_menu():
             style_prefix "quick"
 
             xalign 0.5
-            yalign 0.95
+            yalign 0.98
 
             textbutton _("Назад") action Rollback()
             textbutton _("История") action ShowMenu('history')
@@ -289,7 +289,7 @@ screen navigation():
 
         # xpos gui.navigation_xpos
         if main_menu:
-            xalign 0.5
+            xalign 0.1
         else:
             xoffset 60
         yalign 0.6
