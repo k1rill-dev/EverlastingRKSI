@@ -1,5 +1,5 @@
 label seven_eight_day:
-
+    play music three fadein 1.0
     scene home gg morning with dissolve
 
     th "Уже неделя?"
@@ -17,7 +17,6 @@ label seven_eight_day:
         "Выбросить":
             $ zakolka = False
             th "Нет, зачем она мне?"
-            "*Кидает в мусор*"
             th "Ну и поделом ей, смысла от неё не было."
         "Оставить":
             $ zakolka = True
@@ -30,14 +29,15 @@ label seven_eight_day:
     th "Ещё и этот силуэт… Кто это?"
     th "Он так со мной и не связался до сих пор."
     th "Он тоже что-то знает, я уверен!"
+    play sound rington fadein 1.0
     hero "А… Алина?!"
+    stop sound fadeout 1.0 
     hero "Алло, Алина?! Ты где, нам срочно надо встретиться!"
     al "Через час в парке Горького. Без опозданий"
     hero "Алина, что…"
     th "Не похоже это на неё. Она никогда так не делала. И не сделала бы, я уверен."
     th "Хотя учитывая то, что происходит сейчас, я не берусь утверждать, что знаю человека хорошо."
     th "Идти ли мне на встречу?"
-    "итак, тут по факту уже финалОчка, все выйдет в страниц 40 я думаю. Я сначала фулл распишу ветку самой самой аху… Кхм, крутой концовки с главным сюжетным твистом."
     th "Это не Алина."
     th "Уж за 10 лет я её хоть немного, но знаю."
     th "И что теперь делать?"
@@ -49,15 +49,13 @@ label seven_eight_day:
 
     th "А вдруг это всё таки была Алина?"
     th "Ладно, я всё равно ничего не теряю, надо пойти и проверить."
-    # "*собирается*"
-    # "бля у меня была гачи гифка, где ван даркхолм одевается, но я её потерял"
-    # "*на выходе из дома, в коридоре*"
+    stop music fadeout 1.0
 
     scene in_padik with dissolve
+    play sound ulitsa
 
     th "Так, надеюсь, это действительно Алина."
     th "Я очень надеюсь что с ней всё хорошо…"
-    # "*выходит из двери подъезда*"
 
     scene padik with dissolve
     show al fuuu with vpunch
@@ -74,10 +72,12 @@ label seven_eight_day:
     al "Я что, знаю?"
     hero "Давай ты зайдешь может?"
     al smile "Слава богу ты догадался, давай, зайду."
+    stop sound fadeout 1.0
     
     window hide
     $ timeskip_short()
     scene home gg morning with bkrr_timeskip_transition()
+    play music posidelka
     window show
 
     hero "Итак, что ты тут делаешь, что тут происходит, почему я в каком то…"
@@ -167,8 +167,9 @@ label is_zakolka_true:
     al "Стоять."
     al "Быстро собираемся и ко мне домой."
     hero "Зачем?"
+    stop music fadeout 1.0
     al "Без лишних разговоров. Быстрее я сказала!"
-    
+    play music pridu
     window hide
     $ timeskip_short()
     scene home al night with bkrr_timeskip_transition()

@@ -74,12 +74,18 @@ init python hide:
     config.overlay_functions.append(konami_overlay)
 
 
+
+
 label test0:
     $ persistent.chnomer = True
 
 label start:
 
+    play sound budilnik
+
     th "Как же я не хочу вставать… Ну еще пять минуточек… "
+
+    stop sound fadeout 1.0 
 
     if persistent.chnomer == True:
         jump secret_ending
@@ -87,11 +93,12 @@ label start:
     scene home gg morning with dissolve
     show blinking
 
+    play music intro_games
+
     th "Ладно, через силу, через боль, встаем!"
     th "В такую погоду  не то, что на улицу, с кровати не хочется вставать!"
     th "Но делать нечего…"
     th "Хотя может…"
-    "выбор - идти на 1 пару или нет"
     menu:
         "Иду на 1 пару!":
             $ is_go_to_first_seminar = True
@@ -108,26 +115,33 @@ label start:
 
 
 label go_to_first_seminar_first_day:
-    "пошел на 1 пару"
     th "Не не, я что, прогульщик? Идем в колледж, выбора нет, да и вроде пары должны быть интересные…"
     th "Так, первой стоит облачные технологии- отлично. Второй парой у нас основы программирования… Третьей - физра…"
     th "Ладно, жить можно."
     th "Ну, пора собираться."
 
+    stop music fadeout 1
+
     $ timeskip_short()
     scene bus stop with bkrr_timeskip_transition()
+
+    play sound avtobus
 
     "Главный герой стоит на остановке и ждёт свой 78 автобус."
     th "Эх, а ведь я не хотел поступать в этот колледж на программиста, но кто меня спрашивал? "
     th "Кто бы знал, как могла бы сложиться моя жизнь, поступив я на сценариста, возможно, даже подъём с утра давался бы мне намного легче. "
     th "Хотел бы я написать сценарий для собственной игры… Ну кто знает, может однажды удастся не только написать, но и создать игру. "
     th "Эх, мечты…"
-    "Автобус подъехал и главный герой садится на место у окна.(Эта вся сцена)"
 
     scene abobus with dissolve
 
     th "Дорога с Западного будет долгой. Что там нового мне предложит музыка?"
+
+    play music avtobus_musik
+
     th "С такой спокойной музыкой только “Спокойной ночи малыши” не хватает. Но даже без них спать хочется, ужас."
+
+    stop sound fadeout 1.5
 
     window hide
     show blink
@@ -139,8 +153,12 @@ label go_to_first_seminar_first_day:
 
     th "Я, уснул? Слава богу хоть остановку не проехал."
 
+    stop music fadeout 2.0
+
     $ timeskip_short()
     scene college hallway with bkrr_timeskip_transition()    
+
+    play sound koridor
 
     hero "Всем привет!"
 
@@ -177,13 +195,16 @@ label go_to_first_seminar_first_day:
     hero "Снова променяла нас на ИС-22?"
     cube "Ну не правда, не меняла я вас."
     hero "Да да, не меняла."
+    play sound steps
     cube surprised  "Ой, там ИС-22!"
     hide cube surprised with moveoutleft
-    "*типо убегает*"
     hero "Что и требовалось доказать…"
+    stop sound fadeout 0.5
 
     $ renpy.pause(0.5)
     
+    play sound koridor
+
     hero "Кстати, а какая у нас сейчас пара по расписанию?"
 
     show an normal with dspr 
@@ -214,7 +235,7 @@ label go_to_first_seminar_first_day:
     $ renpy.pause(0.5)
     show an angry with dspr
 
-    an "Хватит в облаках витать!(тут она щелкает пальцами перед лицом типо)"
+    an "Хватит в облаках витать!"
     hero "ААААА!!"
     hero "Не пугай так."
     an normal "Чтобы не втыкал."
@@ -223,30 +244,33 @@ label go_to_first_seminar_first_day:
     
     jeka "Настя, не издевайся над человеком."
     jeka "И вообще, уже звонок по идее должен быть."
-    "*Звенит звонок*"
+    play sound rksi
     hero "А вот и он. Вспомни лучик…"
     jeka "Вот и солнце, да?"
     hero "Учитывая нашу погоду сейчас, то за солнце говорить не приходится. Его попросту нет."
+
+    stop sound fadeout 2.0
 
     hide jeka
     show an happy
     with dspr
 
     hero_na "Три дня дождей!"
-    "и все заходят в кабинет."
 
     scene aud 1 with dissolve
+
+    play sound koridor
 
     hero "В целом, если подумать, то сегодняшний день в колледже не такой уж и сложный."
     hero "Скорее наоборот, сейчас будет пара облачных технологий с Алиной Алексеевной, а она всегда очень интересно объясняет тему."
     
     show oleg _2 at right with dspr
     
-    oleg "Уверен? Я думаю, что мне будут бить лицо…"
+    oleg "Уверен? Я думаю, что мне будет плохо…"
     hero "Это еще почему?"
     oleg "Знаешь, сколько у меня долгов?"
     hero "Даже знать не хочу."
-    oleg "Ну вот тогда молчи."
+    oleg "Ну вот и я о том же."
 
     show ship normal at left with dspr
     # show ma neutral
@@ -257,20 +281,25 @@ label go_to_first_seminar_first_day:
     oleg "Не… Не знаю..."
     ship "Зачёт по моему предмету, если не сдашь мне все практические за 1 семестр)."
     "*здесь вот этот прикол из ace attorney, по типу, take that!*"
-    # oleg "(Хз по идеи он сидит в ахуе, но хз, чтобы он сказал в такой ситуации)"
 
     scene black with dissolve
 
-    "*Чёрный экран и закадровый голос щипанкиной"
     ship "Так, и сегодня мы начинаем изучать докер и все, связанные с ним команды."
+
+    stop sound fadeout 3.0
 
     $ timeskip_short()
     scene college hallway with bkrr_timeskip_transition()    
 
-    "*Звенит звонок на 2 пару.*"
+    play sound rksi
+
     hero "Блин, уже прошло 15 минут, а преподавателя всё нет, может быть уйти с пары?"
 
+    stop sound fadeout 1.5
+
     show jeka serious with dspr
+
+    play sound koridor
 
     jeka "Может всё таки дождемся преподавателя?"
     hero "Правило 15 минут, помните?"
@@ -286,11 +315,9 @@ label go_to_first_seminar_first_day:
     hide jeka
     with dspr
 
-    "выбор уйти или остаться"
     menu:
         "Уходим":
             $ svalil = True
-            "уйти"
             show jeka serious with dspr
             show an happy at left with dspr
             an "Единственно верное решение."
@@ -298,12 +325,11 @@ label go_to_first_seminar_first_day:
 
             scene black with dspr
 
-            "*в раздевалке*"
-            "*звук уведомления*"
+            play sound uved
             th "Вот чёрт, препод всё таки пришел… Придется возвращаться…"
+            stop sound fadeout 0.5
         "Остаемся":
             $ svalil = False
-            "остаться"
             th "Нет, я не должен так поступать, ведь это неправильно."
             th "Я больше не могу ждать, нужно убедить других, чтобы не я один потом получил за то, что ушёл."
 
@@ -312,23 +338,22 @@ label go_to_first_seminar_first_day:
 
             an "Единственно верное решение."
             jeka "Ну ладно, давайте тогда, до завтра."
-            "*в раздевалке*"
-            "*звук уведомления*"
+            play sound uved
             th "Вот чёрт, препод всё таки пришел… Придется возвращаться…"
+            stop sound fadeout 0.5
 
     $ timeskip_short()
     scene college hallway with bkrr_timeskip_transition()
     
     show jeka serious with dspr
     show an normal at left with dspr
-
+    play sound koridor
     jeka "А я говорил, что не стоит уходить. Сейчас бы не писали всей группой объяснительную."
     an "Ну, ничего. Как то всё равно, знаешь?"
-    hero "В следующий раз я тебя обязательно послушаю. Но это не точно.(шепотом)"
+    hero "В следующий раз я тебя обязательно послушаю. Но это не точно."
     jeka normal "Ты что то сказал?"
     hero "Говорю что ты прав, молодец."
-    "*на выходе из шараги*"
-    hero "Лично я не горю желанием оставаться на физру после такой душной пары."
+    hero "Лично я не горю желанием оставаться на физру"
     hero "Так что всем до свидания, увидимся завтра!"
     jeka "Бывай, удачи."
     an "Пока."
@@ -340,15 +365,15 @@ label go_to_first_seminar_first_day:
     scene bus stop evening with bkrr_timeskip_transition()
 
 
-    "*тут что-то вроде таймскипа до автобуса*"
-    "*звонок телефона*"
+    play sound rington
+    stop sound fadeout 0.5
     hero "Алло, да, здравствуйте."
+    play music smert
     hero "В смысле? Этого не может быть!"
     hero "Буду через 5 минут."
-    "*таймскип до дома пидружки(не в квартире)*"
     hero "Это просто невозможно…"
     hero "Почему именно она?"
-    "*таймскип в квартиру пидружки*"
+
 
     $ timeskip_short()
     scene home al morning with bkrr_timeskip_transition()
@@ -373,11 +398,12 @@ label go_to_first_seminar_first_day:
     ma "Все хорошо. Иди домой."
     hero "Точно? "
     ma "Да, мне нужно побыть одной."
+    stop music fadeout 2.0
 
     scene park with dissolve
-
+    play sound ulitsa
     th "Нужно срочно ехать домой, обдумать все."
-    "*тут типо он вздрогнул от холода*"
+    stop sound fadeout 0.5
     th "Осень будет холодной, да?"
 
     scene bus stop al with dspr
@@ -387,8 +413,8 @@ label go_to_first_seminar_first_day:
     scene home gg evening with bkrr_timeskip_transition()
 
 
+    play music despair
 
-    "*таймскип до дома*"
     th "Это просто…"
     th "Не знаю, что делать теперь?"
     th "Кто мог сделать с ней нечто подобное?"
@@ -401,10 +427,10 @@ label go_to_first_seminar_first_day:
     th "Это всё полный бред."
     th "Может, это вообще сон? Я сейчас проснусь?"
     th "Надо себя ущипнуть вроде, дабы проснуться…"
-    "*щипает себя*"
     th "Не сработало…"
     th "Вот же блин, я настолько сильно зациклился на эту ситуацию, что не заметил, как наступила глубокая ночь."
     th "Мне нужно отдохнуть, сегодня был слишком насыщенный день."
+    stop music fadeout 3.0
 
     window hide
     $ renpy.pause(1.0)
@@ -423,7 +449,6 @@ label go_to_first_seminar_first_day:
 label go_to_sec_seminar_first_day:
     th "Не не не, нет ничего важнее сна!"
     th " Я думаю, что если опоздаю на 1 пару, то ничего страшного не случится, ведь так? Ладно, это риторический вопрос."
-    # "Провалившись в свой сон, главный герой вспоминает свою старую знакомую, которая собиралась перейти к ним в ЛУЧШИЙ РОСТОВСКИЙ КОЛЛЕДЖ СВЯЗИ И ИНФОРМАТИКИ. Он видит её силуэт. Далее он видит Настю Антонову, она говорит ему:"
     scene black with dspr
     show an angry with dspr
     
@@ -433,28 +458,28 @@ label go_to_sec_seminar_first_day:
 
     th " Вот чёрт, я опаздываю!"
     th "Ну вот, как знал, что нужно было идти в колледж… Ладно, опоздаю немного."
+    stop music fadeout 1.0
 
     scene bus stop with dissolve
 
-    # "*играет https://vk.com/audio-2001426275_116426275*"
+    play sound avtobus
+
     th "Мда уж, день начался очень и очень “хорошо”, в следующий раз сто процентов встаю и иду на первую пару!"
 
     scene abobus with dspr
 
-    "*автобус*"
+
     hero "Жесть, я еле успеваю к второй паре… Надо написать, что могу опоздать."
 
 
-
-    "*на остановке*"
-    "*гг смотрит на телефон*"
-
     $ timeskip_short()
     scene college stairs with bkrr_timeskip_transition()
+    stop sound fadeout 1.5
+
+    play sound koridor
 
     hero "Ничего себе, я еще и не опоздал!"
-    # hero "Теперь бежим в колледж."
-    "*в колледже*"
+
     ship "Посмотрите-ка, кто всё таки пришёл! Саша, ты ли это?"
 
     show ship shurit with dspr
@@ -469,16 +494,21 @@ label go_to_sec_seminar_first_day:
     ship normal "Ты что-то сказал?"
     hero "Не не, вам послышалось наверное."
     ship "Ну ладно, поверю."
-    "*звонок на пару*"
-    "*таймскип в аудиторию манаковой*"
+    
+    play sound rksi
+
+    stop sound fadeout 2.0
+
 
     $ timeskip_short()
     scene aud 2 people with bkrr_timeskip_transition()
     show jeka happy with dspr
 
+    play sound koridor
+
 
     jeka "Здарова, ну ты и соня конечно."
-    hero "Был бы я Соней, пришёл бы к первой паре.(Типо Горожий)"
+    hero "Был бы я Соней, пришёл бы к первой паре."
     jeka normal "Да ладно, я не осуждаю же. Но ты побил рекорд Кубары, можешь гордиться собой."
     hero "Ха-ха-ха, как смешно."
 
@@ -500,13 +530,15 @@ label go_to_sec_seminar_first_day:
     hero "Снова променяла нас на ИС-22?"
     cube "Ну не правда, не меняла я вас."
     hero "Да да, не меняла."
+    play sound steps
     cube surprised  "Ой, там ИС-22!"
     hide cube surprised with moveoutleft
-    "*типо убегает*"
     hero "Что и требовалось доказать…"
 
+    stop sound fadeout 1.5
+
     $ renpy.pause(0.5)
-    
+    play sound koridor
     hero "Кстати, а какая у нас сейчас пара по расписанию?"
 
     show an normal with dspr 
@@ -537,7 +569,7 @@ label go_to_sec_seminar_first_day:
     $ renpy.pause(0.5)
     show an angry with dspr
 
-    an "Хватит в облаках витать!(тут она щелкает пальцами перед лицом типо)"
+    an "Хватит в облаках витать!"
     hero "ААААА!!"
     hero "Не пугай так."
     an normal "Чтобы не втыкал."
@@ -546,8 +578,9 @@ label go_to_sec_seminar_first_day:
     
     jeka "Настя, не издевайся над человеком."
     jeka "И вообще, уже звонок по идее должен быть."
-    "*Звенит звонок*"
+    play sound rksi
     hero "А вот и он. Вспомни лучик…"
+    stop sound fadeout 1.0
     jeka "Вот и солнце, да?"
     hero "Учитывая нашу погоду сейчас, то за солнце говорить не приходится. Его попросту нет."
 
@@ -556,20 +589,21 @@ label go_to_sec_seminar_first_day:
     with dspr
 
     hero_na "Три дня дождей!"
-    "и все заходят в кабинет."
+
 
     scene aud 1 with dissolve
+    play sound koridor
 
     hero "В целом, если подумать, то сегодняшний день в колледже не такой уж и сложный."
     hero "Скорее наоборот, сейчас будет пара облачных технологий с Алиной Алексеевной, а она всегда очень интересно объясняет тему."
     
     show oleg _2 at right with dspr
     
-    oleg "Уверен? Я думаю, что мне будут бить лицо…"
+    oleg "Уверен? Я думаю, что мне будет плохо…"
     hero "Это еще почему?"
     oleg "Знаешь, сколько у меня долгов?"
     hero "Даже знать не хочу."
-    oleg "Ну вот тогда молчи."
+    oleg "Ну вот и я о том же."
 
     show ship normal at left with dspr
     # show ma neutral
@@ -579,21 +613,20 @@ label go_to_sec_seminar_first_day:
     ship "Это, конечно,  всё хорошо, но знаешь, что ты не сможешь увидеть?)"
     oleg "Не… Не знаю..."
     ship "Зачёт по моему предмету, если не сдашь мне все практические за 1 семестр)."
-    "*здесь вот этот прикол из ace attorney, по типу, take that!*"
-    # oleg "(Хз по идеи он сидит в ахуе, но хз, чтобы он сказал в такой ситуации)"
+
 
     scene black with dissolve
 
-    "*Чёрный экран и закадровый голос щипанкиной"
     ship "Так, и сегодня мы начинаем изучать докер и все, связанные с ним команды."
 
     $ timeskip_short()
-    scene college hallway with bkrr_timeskip_transition()    
+    scene college hallway with bkrr_timeskip_transition()  
+    play sound rksi fadein 0.5  
 
-    "*Звенит звонок на 2 пару.*"
     hero "Блин, уже прошло 15 минут, а преподавателя всё нет, может быть уйти с пары?"
-
+    stop sound fadeout 1.0
     show jeka serious with dspr
+    play sound koridor
 
     jeka "Может всё таки дождемся преподавателя?"
     hero "Правило 15 минут, помните?"
@@ -609,24 +642,21 @@ label go_to_sec_seminar_first_day:
     hide jeka
     with dspr
 
-    "выбор уйти или остаться"
     menu:
         "Уходим":
             $ svalil = True
-            "уйти"
             show jeka serious with dspr
             show an happy at left with dspr
             an "Единственно верное решение."
             jeka "Ну ладно, давайте тогда, до завтра."
+            play sound uved
 
             scene black with dspr
 
-            "*в раздевалке*"
-            "*звук уведомления*"
+            stop sound fadeout 1.0
             th "Вот чёрт, препод всё таки пришел… Придется возвращаться…"
         "Остаемся":
             $ svalil = False
-            "остаться"
             th "Нет, я не должен так поступать, ведь это неправильно."
             th "Я больше не могу ждать, нужно убедить других, чтобы не я один потом получил за то, что ушёл."
 
@@ -635,43 +665,44 @@ label go_to_sec_seminar_first_day:
 
             an "Единственно верное решение."
             jeka "Ну ладно, давайте тогда, до завтра."
-            "*в раздевалке*"
-            "*звук уведомления*"
+            play sound uved
+
             th "Вот чёрт, препод всё таки пришел… Придется возвращаться…"
+            stop sound fadeout 0.5
 
     $ timeskip_short()
     scene college hallway with bkrr_timeskip_transition()
     
     show jeka serious with dspr
     show an normal at left with dspr
+    play sound koridor
 
     jeka "А я говорил, что не стоит уходить. Сейчас бы не писали всей группой объяснительную."
     an "Ну, ничего. Как то всё равно, знаешь?"
-    hero "В следующий раз я тебя обязательно послушаю. Но это не точно.(шепотом)"
+    hero "В следующий раз я тебя обязательно послушаю. Но это не точно."
     jeka normal "Ты что то сказал?"
     hero "Говорю что ты прав, молодец."
     "*на выходе из шараги*"
-    hero "Лично я не горю желанием оставаться на физру после такой душной пары."
+    hero "Лично я не горю желанием оставаться на физру"
     hero "Так что всем до свидания, увидимся завтра!"
     jeka "Бывай, удачи."
     an "Пока."
+    stop sound fadeout 1.0
 
     hide jeka
     hide an
     with dspr
     $ timeskip_short()
+    play sound rington
     scene bus stop evening with bkrr_timeskip_transition()
 
-
-    "*тут что-то вроде таймскипа до автобуса*"
-    "*звонок телефона*"
     hero "Алло, да, здравствуйте."
+    stop sound fadeout 1.0
     hero "В смысле? Этого не может быть!"
+    play music smert
     hero "Буду через 5 минут."
-    "*таймскип до дома пидружки(не в квартире)*"
     hero "Это просто невозможно…"
     hero "Почему именно она?"
-    "*таймскип в квартиру пидружки*"
 
     $ timeskip_short()
     scene home al morning with bkrr_timeskip_transition()
@@ -696,12 +727,13 @@ label go_to_sec_seminar_first_day:
     ma "Все хорошо. Иди домой."
     hero "Точно? "
     ma "Да, мне нужно побыть одной."
+    stop music fadeout 1.0
 
     scene park with dissolve
-
+    play sound ulitsa
     th "Нужно срочно ехать домой, обдумать все."
-    "*тут типо он вздрогнул от холода*"
     th "Осень будет холодной, да?"
+    stop sound fadeout 1.0
 
     scene bus stop al with dspr
     $ renpy.pause(1.5)
@@ -709,8 +741,7 @@ label go_to_sec_seminar_first_day:
     $ timeskip_short()
     scene home gg evening with bkrr_timeskip_transition()
 
-
-    "*таймскип до дома*"
+    play music despair
     th "Это просто…"
     th "Не знаю, что делать теперь?"
     th "Кто мог сделать с ней нечто подобное?"
@@ -723,28 +754,36 @@ label go_to_sec_seminar_first_day:
     th "Это всё полный бред."
     th "Может, это вообще сон? Я сейчас проснусь?"
     th "Надо себя ущипнуть вроде, дабы проснуться…"
-    "*щипает себя*"
     th "Не сработало…"
     th "Вот же блин, я настолько сильно зациклился на эту ситуацию, что не заметил, как наступила глубокая ночь."
     th "Мне нужно отдохнуть, сегодня был слишком насыщенный день."
+    stop music fadeout 1.0
 
-    "СДЕЛАЙ ПЖПЖПЖПЖ ЗАСТАВКУ ИГРЫ ПОД ИНТРО ПЖПЖПЖПЖПЖ"
+    window hide
+    $ renpy.pause(1.0)
+    play music intro fadein 1.0
+    scene black with dissolve
+    $ renpy.pause(13.3, hard=True)
+    show logo: 
+        xalign 0.5 yalign 0.5 
+    $ renpy.pause(7.8, hard=True)
+    stop music fadeout 1.5
+    window show
+
     jump second_day
 
 label stay_home_first_day:
     th " Да не, не хочу я сегодня идти на пары, уж лучше посплю, а там уже можно и постримить любимый валорант."
-    "Главный герой засыпает."
-    "Провалившись в свой сон, главный герой вспоминает свою старую знакомую, которая собиралась перейти к ним в ЛУЧШИЙ РОСТОВСКИЙ КОЛЛЕДЖ СВЯЗИ И ИНФОРМАТИКИ. Он видит чей-то силует и тот говорит ему:"
+
     
     scene white with dissolve
     show cube shade1 with dspr
-    "поменяешь потом ок пон да"
+
     
     nn " Лучше иди в колледж, иначе ты пожалеешь!"
-    "*проснулся с криком*"
 
     scene home gg day with vpunch
-
+    th "ААААААА"
     th "Что это было?!"
     th "Ладно, это же всего лишь сон, просто фантазия моего мозга."
     th "Пойду досыпать своё."
@@ -754,7 +793,7 @@ label stay_home_first_day:
 
     th "Сна ни в одном глазу. Особенно после того кошмара, что в общем-то и неудивительно."
     th "Ладно, пойду поиграю что-ли."
-    "*таймскип до вечера*"
+
 
     $ timeskip_short()
     scene home gg evening with bkrr_timeskip_transition()
@@ -765,14 +804,16 @@ label stay_home_first_day:
     th "..."
     th "Ну…"
     th "Зато золото поднял."
-    "*звонок телефона*"
+    play sound rington
     hero "Алло, да, здравствуйте."
+    stop sound fadeout 0.5
+    stop music fadeout 1.0
     hero "В смысле? Этого не может быть!"
+    play music smert
     hero "Буду через 5 минут."
-    "*таймскип до дома пидружки(не в квартире)*"
     hero "Это просто невозможно…"
     hero "Почему именно она?"
-    "*таймскип в квартиру пидружки*"
+
 
     $ timeskip_short()
     scene home al morning with bkrr_timeskip_transition()
@@ -797,21 +838,23 @@ label stay_home_first_day:
     ma "Все хорошо. Иди домой."
     hero "Точно? "
     ma "Да, мне нужно побыть одной."
+    stop music fadeout 1.0
 
     scene park with dissolve
+    play sound ulitsa
 
     th "Нужно срочно ехать домой, обдумать все."
-    "*тут типо он вздрогнул от холода*"
     th "Осень будет холодной, да?"
+    stop sound fadeout 1.5
 
     scene bus stop al with dspr
     $ renpy.pause(1.5)
     scene abobus with dspr
     $ timeskip_short()
     scene home gg evening with bkrr_timeskip_transition()
+    play music despair
 
 
-    "*таймскип до дома*"
     th "Это просто…"
     th "Не знаю, что делать теперь?"
     th "Кто мог сделать с ней нечто подобное?"
@@ -824,10 +867,20 @@ label stay_home_first_day:
     th "Это всё полный бред."
     th "Может, это вообще сон? Я сейчас проснусь?"
     th "Надо себя ущипнуть вроде, дабы проснуться…"
-    "*щипает себя*"
     th "Не сработало…"
     th "Вот же блин, я настолько сильно зациклился на эту ситуацию, что не заметил, как наступила глубокая ночь."
     th "Мне нужно отдохнуть, сегодня был слишком насыщенный день."
+    stop music fadeout 1.5
 
-    "СДЕЛАЙ ПЖПЖПЖПЖ ЗАСТАВКУ ИГРЫ ПОД ИНТРО ПЖПЖПЖПЖПЖ"
+    window hide
+    $ renpy.pause(1.0)
+    play music intro fadein 1.0
+    scene black with dissolve
+    $ renpy.pause(13.3, hard=True)
+    show logo: 
+        xalign 0.5 yalign 0.5 
+    $ renpy.pause(7.8, hard=True)
+    stop music fadeout 1.5
+    window show
+
     jump second_day

@@ -51,7 +51,6 @@ init 1:
     #потом поменять цвета
     $ th = Character(u'Мысли', color="#FFA500", what_color="#ffffff")
     $ hero = Character(u'Саша', color="#7ec557", what_color="#ffffff")
-    
     $ al = Character(u'Алина', color="#55a9c1", what_color="#ffffff", image='al')
     $ nn = Character(u'Незнакомец', color="#351868", what_color="#ffffff", image='nn')
     $ jeka = Character(u'Женя', color="#41c59d", what_color="#ffffff", image='jeka')
@@ -64,6 +63,32 @@ init 1:
     $ doc = Character(u'Врач', color="#278b81", what_color="#ffffff", image='doc')
     $ hero_na = Character(u'Саша и Настя', color="#FFA500", what_color="#ffffff")
 
+    #Музыка и звуки
+    $ intro_games = "audio/music/vturilas.mp3"
+    $ grust = "audio/music/grust.mp3"
+    $ budilnik = "audio/sound/budilnik.mp3"
+    $ avtobus = "audio/sound/avtobus.mp3"
+    $ avtobus_musik = "audio/music/intro.mp3"
+    $ koridor = "audio/sound/koridor.mp3"
+    $ steps = "audio/sound/steps.mp3"
+    $ rksi = "audio/sound/rksi.mp3"
+    $ uved = "audio/sound/iphone.mp3"
+    $ ulitsa = "audio/sound/ulitsa.mp3"
+    $ rington = "audio/sound/rington.mp3"
+    $ smert = "audio/music/smert.mp3"
+    $ despair = "audio/music/despair.mp3"
+    $ gudki = "audio/sound/gudki.mp3"
+    $ sbros = "audio/sound/bb.mp3"
+    $ tve = "audio/music/TVE.mp3"
+    $ three = "audio/music/three.mp3"
+    $ posidelka = "audio/music/posidelka.mp3"
+    $ pridu = "audio/music/pridu.mp3"
+    $ samurai = "audio/music/pridu.mp3"
+    $ dovakin = "audio/music/dovakin.mp3"
+    $ den = "audio/music/den.mp3"
+    $ nkr = "audio/music/nkr.mp3"
+    $ end = "audio/music/end.mp3"
+    $ bulk = "audio/sound/voda.mp3"
     
     $ clock_transition_sound = "audio/sound/clock_transition_sound.ogg"
     $ define_assets('images/sprites')

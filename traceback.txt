@@ -1,0 +1,36 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/scenario/final.rpy", line 295, in script
+    show text "Идея: Лютый Николай, Белокобыльский Кирилл{p}
+SyntaxError: EOL while scanning string literal (<none>, line 1)
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/scenario/final.rpy", line 295, in script
+    show text "Идея: Лютый Николай, Белокобыльский Кирилл{p}
+  File "C:\govno\renpy-8.1.1-sdk\renpy\ast.py", line 1428, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "C:\govno\renpy-8.1.1-sdk\renpy\ast.py", line 1391, in show_imspec
+    renpy.config.show(name,
+  File "C:\govno\renpy-8.1.1-sdk\renpy\exports.py", line 733, in show
+    if not base.find_target() and renpy.config.missing_show:
+  File "C:\govno\renpy-8.1.1-sdk\renpy\display\image.py", line 421, in find_target
+    self.target = target._duplicate(a)
+  File "C:\govno\renpy-8.1.1-sdk\renpy\text\extras.py", line 256, in _duplicate
+    string = renpy.python.py_eval(param)
+  File "C:\govno\renpy-8.1.1-sdk\renpy\python.py", line 1151, in py_eval
+    code = py_compile(code, 'eval')
+  File "C:\govno\renpy-8.1.1-sdk\renpy\python.py", line 1088, in py_compile
+    raise e
+  File "C:\govno\renpy-8.1.1-sdk\renpy\python.py", line 1034, in py_compile
+    raise orig_e
+  File "C:\govno\renpy-8.1.1-sdk\renpy\python.py", line 1027, in py_compile
+    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
+SyntaxError: EOL while scanning string literal (<none>, line 1)
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.1.1.23060707
+EverlastingRKSI 1.0
+Fri Jun 16 01:28:32 2023
