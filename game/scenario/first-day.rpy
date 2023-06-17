@@ -272,7 +272,7 @@ label go_to_first_seminar_first_day:
     hero "Даже знать не хочу."
     oleg "Ну вот и я о том же."
 
-    show ship normal at left with dspr
+    show ship neutral at left with dspr
     # show ma neutral
 
     ship "Всем здравствуйте! О, Филиппов, наконец-то вернулся. Ну рассказывай, как съездил, где побывал, что видел?"
@@ -377,7 +377,7 @@ label go_to_first_seminar_first_day:
 
     $ timeskip_short()
     scene home al morning with bkrr_timeskip_transition()
-    show ma sad with dspr
+    show ma normal with dspr
 
     ma "Саша..."
     hero "Что случилось?"
@@ -482,16 +482,16 @@ label go_to_sec_seminar_first_day:
 
     ship "Посмотрите-ка, кто всё таки пришёл! Саша, ты ли это?"
 
-    show ship shurit with dspr
+    show ship surprised with dspr
 
     hero "Здравствуйте, Алина Алексеевна…"
-    ship normal "Ну здравствуй, скажешь, почему на паре не было?"
+    ship neutral "Ну здравствуй, скажешь, почему на паре не было?"
     hero "Нуууу…"
-    ship smile "А ладно, я не настолько старая и ворчливая. Пока что."
+    ship happy "А ладно, я не настолько старая и ворчливая. Пока что."
     ship "Возьмешь у ребят задание, сделаешь дома и всё."
     hero "Хорошо, обязательно."
     th "Кто поверил…"
-    ship normal "Ты что-то сказал?"
+    ship neutral "Ты что-то сказал?"
     hero "Не не, вам послышалось наверное."
     ship "Ну ладно, поверю."
     
@@ -605,7 +605,7 @@ label go_to_sec_seminar_first_day:
     hero "Даже знать не хочу."
     oleg "Ну вот и я о том же."
 
-    show ship normal at left with dspr
+    show ship neutral at left with dspr
     # show ma neutral
 
     ship "Всем здравствуйте! О, Филиппов, наконец-то вернулся. Ну рассказывай, как съездил, где побывал, что видел?"
@@ -706,7 +706,7 @@ label go_to_sec_seminar_first_day:
 
     $ timeskip_short()
     scene home al morning with bkrr_timeskip_transition()
-    show ma sad with dspr
+    show ma normal with dspr
 
     ma "Саша..."
     hero "Что случилось?"
