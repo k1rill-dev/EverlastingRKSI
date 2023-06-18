@@ -180,7 +180,9 @@ label is_zakolka_true:
     al "Кажется, мы нашли ключ. Эту заколку мне также отдала Кубара. "
     hero "Теперь осталось понять, как нам их использовать?"
     al "Ага."
-    
+    window hide
+    $ renpy.pause(2.0, hard=True)
+
     jump good_ending
 
 label is_zakolka_false:
@@ -191,6 +193,10 @@ label is_zakolka_false:
     hero "Каком?"
     al "У меня есть пара идей, пошли."
     hero "Давай потом перепроверим твою квартиру, может что-то упустили?"
+
+    window hide
+    $ renpy.pause(2.0, hard=True)
+
 
     jump bad_ending
 

@@ -13,21 +13,21 @@
 # ма - мать Алины
 # вр -  врач			
 init python:
-    BKRR_ROOT_DIR = ""
-    BKRR_ES_IMAGES = "images/"
-    BKRR_IMAGES = BKRR_ROOT_DIR + "images/"
+    ROOT_DIR = ""
+    IMAGES = "images/"
+    DIR_IMAGES = ROOT_DIR + "images/"
 
-    bkrr_circlein_transition = ImageDissolve(BKRR_IMAGES + "transitions/circle.png", 0.5, ramplen=5, reverse = True, alpha=True)
-    bkrr_circleout_transition = ImageDissolve(BKRR_IMAGES + "transitions/circle.png", 0.5, ramplen=5, reverse = False, alpha=True)
-    bkrr_star_falling_transition = ImageDissolve(BKRR_IMAGES + "transitions/star_falling.png", 1.0, ramplen=5, reverse = False, alpha=True)
+    bkrr_circlein_transition = ImageDissolve(DIR_IMAGES + "transitions/circle.png", 0.5, ramplen=5, reverse = True, alpha=True)
+    bkrr_circleout_transition = ImageDissolve(DIR_IMAGES + "transitions/circle.png", 0.5, ramplen=5, reverse = False, alpha=True)
+    bkrr_star_falling_transition = ImageDissolve(DIR_IMAGES + "transitions/star_falling.png", 1.0, ramplen=5, reverse = False, alpha=True)
 
-    bkrr_blindstoleft_transition = ImageDissolve(BKRR_IMAGES + "transitions/blinds_h.png", 1.0, ramplen=25, reverse = False, alpha=True)
-    bkrr_blindstoright_transition = ImageDissolve(BKRR_IMAGES + "transitions/blinds_h.png", 1.0, ramplen=25, reverse = True, alpha=True)
-    bkrr_blindstotop_transition = ImageDissolve(BKRR_IMAGES + "transitions/blinds_v.png", 1.0, ramplen=25, reverse = False, alpha=True)
-    bkrr_blindstobottom_transition = ImageDissolve(BKRR_IMAGES + "transitions/blinds_v.png", 1.0, ramplen=25, reverse = True, alpha=True)
+    bkrr_blindstoleft_transition = ImageDissolve(DIR_IMAGES + "transitions/blinds_h.png", 1.0, ramplen=25, reverse = False, alpha=True)
+    bkrr_blindstoright_transition = ImageDissolve(DIR_IMAGES + "transitions/blinds_h.png", 1.0, ramplen=25, reverse = True, alpha=True)
+    bkrr_blindstotop_transition = ImageDissolve(DIR_IMAGES + "transitions/blinds_v.png", 1.0, ramplen=25, reverse = False, alpha=True)
+    bkrr_blindstobottom_transition = ImageDissolve(DIR_IMAGES + "transitions/blinds_v.png", 1.0, ramplen=25, reverse = True, alpha=True)
 
     def bkrr_timeskip_transition(t=1.0):
-            return ImageDissolve(BKRR_IMAGES + "transitions/timeskip.png", t, ramplen=0, reverse=False, alpha=True)
+            return ImageDissolve(DIR_IMAGES + "transitions/timeskip.png", t, ramplen=0, reverse=False, alpha=True)
 
     def timeskip_short():
             renpy.play(clock_transition_sound, channel="sound")
@@ -47,6 +47,8 @@ init 1:
     $ zakolka = False
     $ is_stay_home_homie = False
     $ persistent.chnomer = False
+    $ persistent.good_ending = False
+    $ persistent.bad_ending = False
 
     #потом поменять цвета
     $ th = Character(u'Мысли', color="#FFA500", what_color="#ffffff")
@@ -55,8 +57,8 @@ init 1:
     $ nn = Character(u'Незнакомец', color="#351868", what_color="#ffffff", image='nn')
     $ jeka = Character(u'Женя', color="#41c59d", what_color="#ffffff", image='jeka')
     $ cube = Character(u'Кубара', color="#d5c91c", what_color="#ffffff", image='cube')
-    $ oleg = Character(u'Олег', color="#06851c", what_color="#ffffff", image='oleg')
-    $ ship = Character(u'Алина Алексеевна', color="#45dec5", what_color="#ffffff", image='ship')
+    $ oleg = Character(u'Олег', color="#14e0ea", what_color="#ffffff", image='oleg')
+    $ ship = Character(u'Щипанкина', color="#e3e31b", what_color="#ffffff", image='ship')
     $ an = Character(u'Настя', color="#d4ad64", what_color="#ffffff", image='an')
     $ tv = Character(u'Диктор', color="#4800ff", what_color="#ffffff")
     $ ma = Character(u'Тетя Маша', color="#82e70f", what_color="#ffffff", image='ma')
@@ -89,6 +91,7 @@ init 1:
     $ nkr = "audio/music/nkr.mp3"
     $ end = "audio/music/end.mp3"
     $ bulk = "audio/sound/voda.mp3"
+    $ achievement = "audio/sound/xbox360ach_3671f2ee5333145.mp3"
     
     $ clock_transition_sound = "audio/sound/clock_transition_sound.ogg"
     $ define_assets('images/sprites')

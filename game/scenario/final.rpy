@@ -4,11 +4,15 @@ label secret_ending:
     $ renpy.movie_cutscene("audio/music/secret.webm")
     "И ещё"
     $ renpy.movie_cutscene("audio/music/rei.webm")
+    "И имба напоследок."
+    $ renpy.movie_cutscene("audio/music/gubin.webm")
     $ persistent.chnomer = False
     return
 
 
 label good_ending:
+    $ persistent.good_ending = True
+    scene home gg morning with dissolve
     play music samurai
     al "Проснись самурай, нам пора сжечь этот город."
     hero "А?"
@@ -136,13 +140,23 @@ label good_ending:
     hero "Всего лишь сон."
 
     stop music fadeout 1.0
-    window hide
+    window auto
+
+    scene black with dissolve
+    play music achievement
+    show achievement_good: 
+        xalign 0.95 
+        yalign 0.95
+    # play sound achievement
+    $ renpy.pause(2.5)
+    stop music
+
     jump titr
     
 
 
 label bad_ending:  
-
+    $ persistent.bad_ending = True
     scene home gg morning with dissolve
     window hide
     show blinking
@@ -282,6 +296,16 @@ label bad_ending:
     tv "Столкнулся автобус и фура. Выжили только двое, парень и девушка. Девушка пришла в сознание, а парень лежит в коме."
 
     window hide
+
+    scene black with dissolve
+    play music achievement
+    show achievement_bad: 
+        xalign 0.95 
+        yalign 0.95
+    # play sound achievement
+    $ renpy.pause(2.5)
+    stop music
+
     jump titr
 
 init:
@@ -294,5 +318,5 @@ label titr:
     play music end fadein 2.0
     scene black with dissolve
     show text 'Идея: Лютый Николай, Белокобыльский Кирилл{p} \n Продюсер, Режиссёр: Лютый Николай, Белокобыльский Кирилл{p}\n Программисты: Лютый Николай, Белокобыльский Кирилл{p} \nГлавные сценаристы: Лютый Николай, Белокобыльский Кирилл{p} \nСценаристы: Лютый Николай, Белокобыльский Кирилл{p} \nЗвукорежиссёр: Лютый Николай{p} \nВ визуальной новелле использовалась данная музыка:{p} \nPyrokinesis, МУККА - Днями-ночами;{p} \nPyrokinesis - Цветами радуги;{p} \nМУККА - Интро;{p} \nPyrokinesis, МУККА, Booker - Некуда бежать;{p} \nDora - Осень пьяная;{p} \nDora - Втюрилась;{p} \nPyrokinesis - Я приду к тебе с клубникой в декабре;{p} \nТДД - Демоны;{p} \nPyrokinesis - Вечно 17;{p} \nPyrokinesis - Молот ведьм(Remastered);{p} \nPyrokinesis - Терновый венец эволюции;{p} \nThe Cat Empire - The Lost Song{p} \nАвторы благодарят за помощь в создании визуальной новеллы{p} \nМанакову Ольгу Петровну за возможность реализовать данную идею и получить за неё автомат{p} \nСоздателей Renpy за упрощение в написании игры данного жанра{p} \nБлагодарим всех, кто прошёл данную игру и желаем никогда не сдаваться и идти до конца, ведь{p} \nвойн без потерь не бывает, и иногда победа приносит столько потерь, что больше похоже на поражение.{p} \nВойна всегда непредсказуема — твой противник может стать твоим союзником, если у вас двоих появляются общие интересы.{p} \nБольше всего от войны страдают невинные, которые оказались втянуты в сражение против своей воли.{p} \nВойна — это путь обмана. И порой обманутым оказываешься ты сам.{p} \nИ в заключение хочется сказать, что у каждой истории есть начало и конец.{p} \nУ каждой истории есть своя канва, синопсис, содержание, ключевые моменты, прологи и эпилоги. И нет такой книги, в которой при каждом новом прочтении не открывались бы вещи, на которые раньше не обращал внимания.{p} \nУ каждой истории есть начало и конец. \nПочти у каждой...{p} \n' at txt_up
-    pause 90
+    pause 100
     return

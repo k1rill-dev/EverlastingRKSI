@@ -247,6 +247,10 @@ label go_to_first_seminar_sec_day:
     th "Ладно…"
     th "Время уже позднее, пойду-ка я спать."
     stop music fadeout 1.5
+
+    window hide
+    $ renpy.pause(2.0, hard=True)
+
     jump seven_eight_day
 
 label go_to_sec_seminar_sec_day:
@@ -299,16 +303,16 @@ label go_to_sec_seminar_sec_day:
 
     ship "Посмотрите-ка, кто всё таки пришёл! Саша, ты ли это?"
 
-    show ship shurit with dspr
+    show ship happy with dspr
 
     hero "Здравствуйте, Алина Алексеевна…"
-    ship normal "Ну здравствуй, скажешь, почему на паре не было?"
+    ship neutral "Ну здравствуй, скажешь, почему на паре не было?"
     hero "Нуууу…"
-    ship smile "А ладно, я не настолько старая и ворчливая. Пока что."
+    ship happy "А ладно, я не настолько старая и ворчливая. Пока что."
     ship "Возьмешь у ребят задание, сделаешь дома и всё."
     hero "Хорошо, обязательно."
     th "Кто поверил…"
-    ship normal "Ты что-то сказал?"
+    ship neutral "Ты что-то сказал?"
     hero "Не не, вам послышалось наверное."
     ship "Ну ладно, поверю."
 
@@ -377,13 +381,19 @@ label go_to_sec_seminar_sec_day:
     hero "Просто хочу с Линой поговорить, вот и всё."
     ma "Эх, молодёжь… {w}Хорошо, я ей передам."
     hero "Спасибо, до свидания."
-    "*бросил трубку*"
+    # "*бросил трубку*"
+    play sound sbros
     th "Так, теперь нужно дождаться звонка от Алины"
-    play sound rington fadein 0.5
+    
 
     $ timeskip_short()
-    scene naberezhnaya with bkrr_timeskip_transition()    
-    stop sound fadeout 1.0
+    scene naberezhnaya with bkrr_timeskip_transition()
+    
+    play sound rington    
+    $ renpy.pause(4.0)
+    stop sound
+
+
     al "Саш? Что случилось?"
     play sound ulitsa
     hero "Лина, слава богу!"
@@ -495,7 +505,7 @@ label stay_home_sec_day:
     
     show blinking
     $ renpy.pause(1.5)
-    scene white with dissolve
+    scene black with dissolve
     show cube shade1 with dspr
 
    
@@ -529,7 +539,7 @@ label stay_home_sec_day:
     th "Почему именно она?"
     $ timeskip_short()
     scene home al morning with bkrr_timeskip_transition()
-    show ma sad with dspr
+    show ma normal with dspr
 
     ma "Саша..."
     hero "Что случилось?"

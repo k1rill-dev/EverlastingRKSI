@@ -80,6 +80,7 @@ label test0:
     $ persistent.chnomer = True
 
 label start:
+    stop music fadeout 1.0
 
     play sound budilnik
 
@@ -280,7 +281,6 @@ label go_to_first_seminar_first_day:
     ship "Это, конечно,  всё хорошо, но знаешь, что ты не сможешь увидеть?)"
     oleg "Не… Не знаю..."
     ship "Зачёт по моему предмету, если не сдашь мне все практические за 1 семестр)."
-    "*здесь вот этот прикол из ace attorney, по типу, take that!*"
 
     scene black with dissolve
 
@@ -543,7 +543,7 @@ label go_to_sec_seminar_first_day:
 
     show an normal with dspr 
 
-    an "Облачные технологии вроде."
+    an "Программирование вроде."
     hero "О, Настя, привет."
     an "Ага, привет."
     an "В доту сегодня собираем стак?"
@@ -590,12 +590,10 @@ label go_to_sec_seminar_first_day:
 
     hero_na "Три дня дождей!"
 
-
-    scene aud 1 with dissolve
-    play sound koridor
+    scene aud 2 people with dissolve
 
     hero "В целом, если подумать, то сегодняшний день в колледже не такой уж и сложный."
-    hero "Скорее наоборот, сейчас будет пара облачных технологий с Алиной Алексеевной, а она всегда очень интересно объясняет тему."
+    hero "Скорее наоборот, сейчас будет пара программирования, а там в принципе интересно."
     
     show oleg _2 at right with dspr
     
@@ -605,84 +603,54 @@ label go_to_sec_seminar_first_day:
     hero "Даже знать не хочу."
     oleg "Ну вот и я о том же."
 
-    show ship neutral at left with dspr
+    $ renpy.pause(1.0)
+
+    oleg "Ой, преподаватель пришел, все, потом поговорим."
+
+    # show ship neutral at left with dspr
     # show ma neutral
 
-    ship "Всем здравствуйте! О, Филиппов, наконец-то вернулся. Ну рассказывай, как съездил, где побывал, что видел?"
-    oleg "Здравствуйте Алина Алексеевна, да всё хорошо, много чего видел."
-    ship "Это, конечно,  всё хорошо, но знаешь, что ты не сможешь увидеть?)"
-    oleg "Не… Не знаю..."
-    ship "Зачёт по моему предмету, если не сдашь мне все практические за 1 семестр)."
+    # ship "Всем здравствуйте! О, Филиппов, наконец-то вернулся. Ну рассказывай, как съездил, где побывал, что видел?"
+    # oleg "Здравствуйте Алина Алексеевна, да всё хорошо, много чего видел."
+    # ship "Это, конечно,  всё хорошо, но знаешь, что ты не сможешь увидеть?)"
+    # oleg "Не… Не знаю..."
+    # ship "Зачёт по моему предмету, если не сдашь мне все практические за 1 семестр)."
 
 
     scene black with dissolve
 
-    ship "Так, и сегодня мы начинаем изучать докер и все, связанные с ним команды."
+    # ship "Так, и сегодня мы начинаем изучать докер и все, связанные с ним команды."
 
     $ timeskip_short()
     scene college hallway with bkrr_timeskip_transition()  
     play sound rksi fadein 0.5  
 
-    hero "Блин, уже прошло 15 минут, а преподавателя всё нет, может быть уйти с пары?"
-    stop sound fadeout 1.0
-    show jeka serious with dspr
-    play sound koridor
+    # hero "Блин, уже прошло 15 минут, а преподавателя всё нет, может быть уйти с пары?"
+    # stop sound fadeout 1.0
+    # show jeka serious with dspr
+    # play sound koridor
 
-    jeka "Может всё таки дождемся преподавателя?"
-    hero "Правило 15 минут, помните?"
+    # jeka "Может всё таки дождемся преподавателя?"
+    # hero "Правило 15 минут, помните?"
 
-    show an normal at left with dspr
+    # show an normal at left with dspr
 
-    an "Поддерживаю, как говорится, кто куда, а я домой."
-    jeka "Я всё таки подожду, мало ли, потом влетит ещё."
-    oleg "Ну ребята, давайте, до завтра, я в принципе не собирался оставаться на эту пару."
-    hero "Дилемма… Уйти или остаться?"
+    # an "Поддерживаю, как говорится, кто куда, а я домой."
+    # jeka "Я всё таки подожду, мало ли, потом влетит ещё."
+    # oleg "Ну ребята, давайте, до завтра, я в принципе не собирался оставаться на эту пару."
+    # hero "Дилемма… Уйти или остаться?"
 
-    hide an
-    hide jeka
-    with dspr
+    # hide an
+    # hide jeka
+    # with dspr
 
-    menu:
-        "Уходим":
-            $ svalil = True
-            show jeka serious with dspr
-            show an happy at left with dspr
-            an "Единственно верное решение."
-            jeka "Ну ладно, давайте тогда, до завтра."
-            play sound uved
-
-            scene black with dspr
-
-            stop sound fadeout 1.0
-            th "Вот чёрт, препод всё таки пришел… Придется возвращаться…"
-        "Остаемся":
-            $ svalil = False
-            th "Нет, я не должен так поступать, ведь это неправильно."
-            th "Я больше не могу ждать, нужно убедить других, чтобы не я один потом получил за то, что ушёл."
-
-            show jeka serious with dspr
-            show an happy at left with dspr
-
-            an "Единственно верное решение."
-            jeka "Ну ладно, давайте тогда, до завтра."
-            play sound uved
-
-            th "Вот чёрт, препод всё таки пришел… Придется возвращаться…"
-            stop sound fadeout 0.5
-
-    $ timeskip_short()
-    scene college hallway with bkrr_timeskip_transition()
+    # $ timeskip_short()
+    # scene college hallway with bkrr_timeskip_transition()
     
     show jeka serious with dspr
     show an normal at left with dspr
     play sound koridor
 
-    jeka "А я говорил, что не стоит уходить. Сейчас бы не писали всей группой объяснительную."
-    an "Ну, ничего. Как то всё равно, знаешь?"
-    hero "В следующий раз я тебя обязательно послушаю. Но это не точно."
-    jeka normal "Ты что то сказал?"
-    hero "Говорю что ты прав, молодец."
-    "*на выходе из шараги*"
     hero "Лично я не горю желанием оставаться на физру"
     hero "Так что всем до свидания, увидимся завтра!"
     jeka "Бывай, удачи."
@@ -776,7 +744,7 @@ label stay_home_first_day:
     th " Да не, не хочу я сегодня идти на пары, уж лучше посплю, а там уже можно и постримить любимый валорант."
 
     
-    scene white with dissolve
+    scene black with dissolve
     show cube shade1 with dspr
 
     
@@ -817,7 +785,7 @@ label stay_home_first_day:
 
     $ timeskip_short()
     scene home al morning with bkrr_timeskip_transition()
-    show ma sad with dspr
+    show ma normal with dspr
 
     ma "Саша..."
     hero "Что случилось?"
