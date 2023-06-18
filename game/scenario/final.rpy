@@ -4,8 +4,6 @@ label secret_ending:
     $ renpy.movie_cutscene("audio/music/secret.webm")
     "И ещё"
     $ renpy.movie_cutscene("audio/music/rei.webm")
-    "И имба напоследок."
-    $ renpy.movie_cutscene("audio/music/gubin.webm")
     $ persistent.chnomer = False
     return
 
